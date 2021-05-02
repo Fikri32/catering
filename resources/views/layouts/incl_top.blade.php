@@ -36,7 +36,9 @@
 <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
 <script src="{{ asset('assets/js/core/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/js/core/bootstrap.bundle.min.js') }}"></script>
+
 {{-- <script src="{{ asset('pusher/pusher.js') }}"></script> --}}
 <script src="{{ asset('assets/js/core/bootstrap.bundle.min.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('assets/js/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/js/plugins/jquery-simplecolorpicker/jquery.simplecolorpicker-fontawesome.css') }}">
+<script src="https://unpkg.com/sweetalert2@7.18.0/dist/sweetalert2.all.js"></script>

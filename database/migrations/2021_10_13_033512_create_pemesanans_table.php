@@ -15,7 +15,8 @@ class CreatePemesanansTable extends Migration
     {
         Schema::create('pemesanans', function (Blueprint $table) {
             $table->id();
-           
+            $table->unsignedBigInteger('id_departement');
+            $table->foreign('id_departement')->references('id')->on('departments')->onDelete('cascade');
             $table->integer('jumlah');
             $table->timestamps();
         });

@@ -2,17 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Departments;
-use Auth;
-use Carbon\Carbon;
-use DB;
-use App\Pemesanan;
-use App\UserPesan;
 use Illuminate\Http\Request;
-Use Alert;
+use App\UserPesan;
 
-class PemesananController extends Controller
+class TerimaPesananController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,7 +14,7 @@ class PemesananController extends Controller
      */
     public function index()
     {
-        //
+        return view();
     }
 
     /**
@@ -31,11 +24,7 @@ class PemesananController extends Controller
      */
     public function create()
     {
-        $mytime = Carbon::now();
-        $role = Auth::user()->id_department;
-        $user = User::where('id_department','=',$role)->get();
-        // dd($user);
-        return view('request.form',compact('user','mytime'));
+        //
     }
 
     /**
@@ -46,34 +35,7 @@ class PemesananController extends Controller
      */
     public function store(Request $request)
     {
-        $karyawan = User::all();
-        $depart = Auth::user()->departemen->id;
-        $pesan = new Pemesanan();
-        // $gatebar->id_gatepass = $request->get('barang');
-        $pesan->jumlah = count($request->input('checked'));
-        $pesan->id_departement = $depart;
-        
-        if($pesan->save())
-        {
-            if(!empty($request->input('checked'))){
-               
-                $id = $pesan->id;
-                foreach($request->input('checked') as $key =>$karyawan)
-                {
-                    // dd($request->all())
-                    $pesanuser = new UserPesan();
-                    $pesanuser->id_pemesanan =  $id;
-                    $pesanuser->id_user =  $request->checked[$key];
-                   
-                    $pesanuser->save();
-                }
-                // DB::table('user_pemesanan')->insert($insert);
-            }
-        }
-   
-       
-        // dd($request->input('checked'));
-        return redirect()->back();
+        //
     }
 
     /**
@@ -120,6 +82,4 @@ class PemesananController extends Controller
     {
         //
     }
-
-  
 }

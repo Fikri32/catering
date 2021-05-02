@@ -8,6 +8,6 @@ class Pemesanan extends Model
 {
     protected $table = 'pemesanans';
     protected $fillable = [
-      'jumlah'
+      'jumlah','id_departemens'
     ];
 }

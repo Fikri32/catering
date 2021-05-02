@@ -44,6 +44,7 @@
         </div>
         <!-- END Page Container -->
         @include('layouts/incl_bottom')
+        @include('sweetalert::alert')
         @stack('scripts')
     </body>
 </html>
