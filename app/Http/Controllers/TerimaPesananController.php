@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\UserPesan;
+use App\Pemesanan;
+use App\User;
+use App\Departments;
+use DB;
 
 class TerimaPesananController extends Controller
 {
@@ -14,7 +18,25 @@ class TerimaPesananController extends Controller
      */
     public function index()
     {
-        return view();
+        $dep = Departments::all();
+
+        $dept = Departments::pluck('id');
+
+        $personil = DB::table('users')
+        ->select('id_department',DB::raw('count(*) as total'))
+        ->groupBy('id_department')
+        ->pluck('total')->all();
+
+        $list = User::where('id_department','=',$dept)->get();
+
+        $pemesanan = Pemesanan::all();
+
+        $data = [
+            'dep' =>  $dep,
+            'personil' => $personil
+        ];
+        
+        return view('get_request.index',compact('dept','personil','dep','data','pemesanan'));
     }
 
     /**

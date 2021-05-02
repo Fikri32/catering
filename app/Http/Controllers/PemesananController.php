@@ -52,6 +52,7 @@ class PemesananController extends Controller
         // $gatebar->id_gatepass = $request->get('barang');
         $pesan->jumlah = count($request->input('checked'));
         $pesan->id_departement = $depart;
+        $pesan->shift = $request->shift;
         
         if($pesan->save())
         {

@@ -18,6 +18,7 @@ class CreatePemesanansTable extends Migration
             $table->unsignedBigInteger('id_departement');
             $table->foreign('id_departement')->references('id')->on('departments')->onDelete('cascade');
             $table->integer('jumlah');
+            $table->string('shift')->nullable();
             $table->timestamps();
         });
     }

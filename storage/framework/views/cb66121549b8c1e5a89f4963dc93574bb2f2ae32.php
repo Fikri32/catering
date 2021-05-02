@@ -1,6 +1,6 @@
-@extends('layouts/master')
 
-@section('content')
+
+<?php $__env->startSection('content'); ?>
 <div class="content">
     <div class="row">
         <div class="col-lg-12">
@@ -18,7 +18,7 @@
         
                 </div>
                 <div class="block-content">
-                  @foreach ($pemesanan as $d)
+                  <?php $__currentLoopData = $pemesanan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                   <br>
                     <div id="accordion">
                     
@@ -26,14 +26,15 @@
                           <div class="card-header" id="headingOne">
                             <h5 class="mb-0">
                             
-                              <button class="btn btn-link bg-body-light" data-toggle="collapse" data-target="#collapse-{{ $d->id }}" aria-expanded="true" aria-controls="collapseOne">
-                                {{Carbon\Carbon::parse($d->created_at)->translatedFormat('d F Y h:i:s')}}
+                              <button class="btn btn-link bg-body-light" data-toggle="collapse" data-target="#collapse-<?php echo e($d->id); ?>" aria-expanded="true" aria-controls="collapseOne">
+                                <?php echo e(Carbon\Carbon::parse($d->created_at)->translatedFormat('d F Y h:i:s')); ?>
+
                               </button>
                              
                             </h5>
                           </div>
 
-                          <div id="collapse-{{ $d->id }}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                          <div id="collapse-<?php echo e($d->id); ?>" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                             <div class="card-body">
                               <br>
                               <table class=" table table-hover table-bordered">
@@ -64,13 +65,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                  @for ($i = 0; $i < count($data['dep']); $i++)
+                                  <?php for($i = 0; $i < count($data['dep']); $i++): ?>
                                       
                                  
                                   <tr class=" text-center">
-                                    <td>{{$i + 1}}</td>
-                                    <td>{{$dep[$i]->nama}}</td>
-                                    <td>{{$personil[$i]}}</td>
+                                    <td><?php echo e($i + 1); ?></td>
+                                    <td><?php echo e($dep[$i]->nama); ?></td>
+                                    <td><?php echo e($personil[$i]); ?></td>
                                     <td>0</td>
                                     <td>0</td>
                                     <td>0</td>
@@ -80,14 +81,14 @@
                                     <td>0</td>
                                     <td>0</td>
                                 </tr>
-                                @endfor
+                                <?php endfor; ?>
                                 </tbody>
                             </table>
                             </div>
                           </div>
                         </div>
                       </div>
-                      @endforeach
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     <!-- END Products Table -->
                 </div>
             </div>
@@ -95,9 +96,9 @@
         </div>
     </div>
 </div>
-@stop
+<?php $__env->stopSection(); ?>
 
-@push('scripts')
+<?php $__env->startPush('scripts'); ?>
 <script type="text/javascript">
     jQuery(document).ready(function($) {
         $(".clickable-row").click(function() {
@@ -105,4 +106,6 @@
         });
     });
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts/master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Catering\resources\views/get_request/index.blade.php ENDPATH**/ ?>

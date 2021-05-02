@@ -1,9 +1,9 @@
-@extends('layouts.master')
 
-@section('content')
-@php
+
+<?php $__env->startSection('content'); ?>
+<?php
     $formTitle = !empty($barang) ? 'Update' : 'New'
-@endphp
+?>
 <div class="content">
     <div class="row">
         <div class="col-lg-12">
@@ -11,21 +11,21 @@
                 <div class="block-content">
                     <div class="py-20 text-center">
                         <h1 class="font-w700 text-white mb-10">Order Catering</h1>
-                        <h2 class="h4 font-w400 text-white-op">{{$formTitle}} Order Catering</h2>
+                        <h2 class="h4 font-w400 text-white-op"><?php echo e($formTitle); ?> Order Catering</h2>
                     </div>
                 </div>
             </div>
             <!-- Default Elements -->
             <div class="block block-rounded">
                 <div class="block-content">
-                    <form action="{{ route('pemesanan.store') }}" method="post" enctype="multipart/form-data">
-                        @csrf
+                    <form action="<?php echo e(route('pemesanan.store')); ?>" method="post" enctype="multipart/form-data">
+                        <?php echo csrf_field(); ?>
                         <div class="row justify-content-center">
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <div class="col-md-12">
                                         <div class="form-material form-material-primary ">
-                                            <input type="text" value="{{Carbon\Carbon::parse($mytime)->translatedFormat('d F Y h:i:s')}}" disabled class="form-control" id="tanggal" name="tanggal" placeholder="Masukan Tanggal">
+                                            <input type="text" value="<?php echo e(Carbon\Carbon::parse($mytime)->translatedFormat('d F Y h:i:s')); ?>" disabled class="form-control" id="tanggal" name="tanggal" placeholder="Masukan Tanggal">
                                             <label for="no_indeks">Tanggal</label>
                                         </div>
                                     </div>
@@ -60,19 +60,19 @@
                         
                             <!-- Table body -->
                             <tbody>
-                                @foreach ($user as $index => $d)   
+                                <?php $__currentLoopData = $user; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $d): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>   
                                 <tr>
                                     <td >
                                         <div class="custom-control custom-checkbox">
-                                            <input type="checkbox"  value="{{$d->id}}" name="checked[]" id="tableDefaultCheck1">
-                                            <label  for="tableDefaultCheck1">{{$index + 1}}</label>
+                                            <input type="checkbox"  value="<?php echo e($d->id); ?>" name="checked[]" id="tableDefaultCheck1">
+                                            <label  for="tableDefaultCheck1"><?php echo e($index + 1); ?></label>
                                         </div>
                                     </td>
-                                    <td>{{$d->name}}</td>
-                                    <td>{{$d->getRoleNames()}}</td>
+                                    <td><?php echo e($d->name); ?></td>
+                                    <td><?php echo e($d->getRoleNames()); ?></td>
                                 
                                 </tr>
-                                @endforeach
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </tbody>
                             <!-- Table body -->
                         </table>
@@ -90,5 +90,7 @@
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\Catering\resources\views/request/form.blade.php ENDPATH**/ ?>
