@@ -9,11 +9,16 @@
             
         ?>
        
-        
+        <?php if($today->hour >= 16 ): ?>
+        <li class="">
+            <a class="popup"><i class="si si-social-dropbox mr-5"></i>Catering Request</a>
+         
+        </li>
+        <?php else: ?>
         <li class="">
             <a class="" href="<?php echo e(route('pemesanan.create')); ?>"><i class="si si-social-dropbox mr-5"></i>Catering Request</a>
         </li>
-        
+        <?php endif; ?>
       
        
         

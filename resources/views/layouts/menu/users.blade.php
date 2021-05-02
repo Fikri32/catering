@@ -9,16 +9,16 @@
             
         @endphp
        
-        {{-- @if ($today->hour >= 16 )
+        @if ($today->hour >= 16 )
         <li class="">
             <a class="popup"><i class="si si-social-dropbox mr-5"></i>Catering Request</a>
          
         </li>
-        @else --}}
+        @else
         <li class="">
             <a class="" href="{{route('pemesanan.create')}}"><i class="si si-social-dropbox mr-5"></i>Catering Request</a>
         </li>
-        {{-- @endif --}}
+        @endif
       
        
         

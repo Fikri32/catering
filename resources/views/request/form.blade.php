@@ -38,7 +38,7 @@
                                             <select class="form-control" name="shift" id="shift">
                                                 <option value="">Pilih shift </option>
                                                 <option value="shift 1">Shift 1</option>
-                                                <option value="shift 1">Shift 2</option>
+                                                <option value="shift 2">Shift 2</option>
                                              
                                             </select>
                                             <label for="shift">Shift</label>

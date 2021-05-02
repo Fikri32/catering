@@ -31,12 +31,23 @@ class TerimaPesananController extends Controller
 
         $pemesanan = Pemesanan::all();
 
+        $shift1 = Pemesanan::where('shift','=','shift 1')
+        
+        ->pluck('jumlah');
+
+        
+        $shift2 = Pemesanan::where('shift','=','shift 2')
+        ->pluck('jumlah');
+
+        // dd($shift1);
         $data = [
             'dep' =>  $dep,
-            'personil' => $personil
+            'personil' => $personil,
+            'shift1' => $shift1,
+            'pemesanan'=> $pemesanan
         ];
         
-        return view('get_request.index',compact('dept','personil','dep','data','pemesanan'));
+        return view('get_request.index',compact('dept','personil','dep','data','pemesanan','shift1','shift2'));
     }
 
     /**
